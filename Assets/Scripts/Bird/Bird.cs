@@ -37,7 +37,7 @@ public class Bird : MonoBehaviour
 
     private void ProcessCollision(IInteractable interactable)
     {
-        if(interactable is Pipe || interactable is Ground)
+        if(interactable is Pipe || interactable is Ground || interactable is Enemy)
         {
             GameOver?.Invoke();
             _mover.Freeze();

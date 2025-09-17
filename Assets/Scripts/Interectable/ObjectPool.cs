@@ -1,56 +1,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
 {
     [SerializeField] private Transform _container;
-    [SerializeField] private PipeGroup _prefab;
+    [SerializeField] private T _prefab;
 
-    private Queue<PipeGroup> _pool;
-    private List<PipeGroup> _activePipes;
+    private Queue<T> _pool;
+    private List<T> _activeObjects;
 
-    public IEnumerable<PipeGroup> PooledOjects => _pool;
+    public IEnumerable<T> PooledOjects => _pool;
 
     private void Awake()
     {
-        _pool = new Queue<PipeGroup>();
-        _activePipes = new List<PipeGroup>();
+        _pool = new Queue<T>();
+        _activeObjects = new List<T>();
     }
 
-    public PipeGroup GetObject()
+    public T GetObject()
     {
-        PipeGroup pipe;
+        T obj;
 
         if (_pool.Count == 0)
         {
-            pipe = Instantiate(_prefab);
-            pipe.transform.parent = _container;
+            obj = Instantiate(_prefab, _container);
         }
         else
         {
-            pipe = _pool.Dequeue();
+            obj = _pool.Dequeue();
         }
 
-        _activePipes.Add(pipe);
-        pipe.gameObject.SetActive(true);
+        _activeObjects.Add(obj);
+        obj.gameObject.SetActive(true);
 
-        return pipe;
+        return obj;
     }
 
-    public void PutObject(PipeGroup pipe)
+    public void PutObject(T obj)
     {
-        _activePipes.Remove(pipe);
-        _pool.Enqueue(pipe);
-        pipe.gameObject.SetActive(false);
+        _activeObjects.Remove(obj);
+        _pool.Enqueue(obj);
+        obj.gameObject.SetActive(false);
     }
 
     public void Reset()
     {
-        if (_activePipes.Count > 0)
+        if (_activeObjects.Count > 0)
         {
-            for (int i = _activePipes.Count - 1; i >= 0; i--)
+            for (int i = _activeObjects.Count - 1; i >= 0; i--)
             {
-                PutObject(_activePipes[i]);
+                PutObject(_activeObjects[i]);
             }
         }
     }

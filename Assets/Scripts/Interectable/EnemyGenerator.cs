@@ -1,13 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class PipeGenerator : MonoBehaviour
+public class EnemyGenerator : MonoBehaviour
 {
     [SerializeField] private float _delay;
     [SerializeField] private float _lowerBound;
     [SerializeField] private float _upperBound;
-    [SerializeField] private ObjectPool _pool;
-    [SerializeField] private ObjectRemover _remover;
+    [SerializeField] private ObjectPool<Enemy> _pool;
+    [SerializeField] private EnemyRemover _remover;
 
     private Coroutine _generateCoroutine;
     private WaitForSeconds _generateWait;
