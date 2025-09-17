@@ -1,18 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
+public class ObjectPool<T> where T : MonoBehaviour, IInteractable
 {
-    [SerializeField] private Transform _container;
-    [SerializeField] private T _prefab;
+    private readonly Transform _container;
+    private readonly T _prefab;
 
-    private Queue<T> _pool;
-    private List<T> _activeObjects;
+    private readonly Queue<T> _pool;
+    private readonly List<T> _activeObjects;
 
     public IEnumerable<T> PooledOjects => _pool;
 
-    private void Awake()
+    public ObjectPool(T prefab, Transform container = null)
     {
+        _prefab = prefab;
+        _container = container;
         _pool = new Queue<T>();
         _activeObjects = new List<T>();
     }
@@ -23,7 +25,7 @@ public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
 
         if (_pool.Count == 0)
         {
-            obj = Instantiate(_prefab, _container);
+            obj = Object.Instantiate(_prefab, _container);
         }
         else
         {

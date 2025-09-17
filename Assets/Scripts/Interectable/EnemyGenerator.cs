@@ -8,6 +8,8 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField] private float _upperBound;
     [SerializeField] private ObjectPool<Enemy> _pool;
     [SerializeField] private EnemyRemover _remover;
+    [SerializeField] private Enemy _enemyPrefab;
+    [SerializeField] private Transform _container;
 
     private Coroutine _generateCoroutine;
     private WaitForSeconds _generateWait;
@@ -16,6 +18,8 @@ public class EnemyGenerator : MonoBehaviour
 
     private void Awake()
     {
+        _pool = new ObjectPool<Enemy>(_enemyPrefab, _container);
+        _remover.Initialize(_pool);
         _generateWait = new WaitForSeconds(_delay);
         _startWait = new WaitForSeconds(_startDelay);
     }

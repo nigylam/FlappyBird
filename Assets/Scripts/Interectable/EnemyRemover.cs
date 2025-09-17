@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class EnemyRemover : MonoBehaviour
 {
-    [SerializeField] private ObjectPool<Enemy> _pool;
+    private ObjectPool<Enemy> _pool;
+
+    public void Initialize(ObjectPool<Enemy> pool)
+    {
+        _pool = pool;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

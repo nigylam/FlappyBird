@@ -5,7 +5,7 @@ using UnityEngine;
 public class Game : MonoBehaviour
 {
     [SerializeField] private Bird _bird;
-    [SerializeField] private EnemyGenerator _pipeGenerator;
+    [SerializeField] private EnemyGenerator _enemyGenerator;
     [SerializeField] private StartScreen _startScreen;
     [SerializeField] private EndGameScreen _endGameScreen;
 
@@ -45,7 +45,7 @@ public class Game : MonoBehaviour
     {
         Time.timeScale = 1;
         _bird.Reset();
-        _pipeGenerator.Reset();
+        _enemyGenerator.Reset();
     }
 
     private void EndGame()

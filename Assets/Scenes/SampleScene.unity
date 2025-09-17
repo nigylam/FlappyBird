@@ -317,7 +317,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 495851482}
-  - component: {fileID: 495851483}
   - component: {fileID: 495851484}
   m_Layer: 0
   m_Name: EnemyGenerator
@@ -341,20 +340,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 519420032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &495851483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495851481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48e781851dd70724792cd411a0f6f12d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _container: {fileID: 643348444}
-  _prefab: {fileID: 6234343527707325659, guid: 320d5b7cdab5d5f4496f30c212ae4dd9, type: 3}
 --- !u!114 &495851484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,11 +352,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388a237d97253f549b1801eaa18c7613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delay: 1
-  _lowerBound: 4
-  _upperBound: 7
-  _pool: {fileID: 495851483}
+  _delay: 2
+  _lowerBound: -3
+  _upperBound: 4
   _remover: {fileID: 1549827124}
+  _enemyPrefab: {fileID: 6234343527707325659, guid: 320d5b7cdab5d5f4496f30c212ae4dd9, type: 3}
+  _container: {fileID: 643348444}
 --- !u!1 &497448545
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,7 +697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bird: {fileID: 497448550}
-  _pipeGenerator: {fileID: 0}
+  _enemyGenerator: {fileID: 495851484}
   _startScreen: {fileID: 1585095520}
   _endGameScreen: {fileID: 1394902033}
 --- !u!1 &564050849
@@ -1351,7 +1337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0191f9853c8da6644a44c5245fdf2c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pool: {fileID: 495851483}
 --- !u!61 &1549827125
 BoxCollider2D:
   m_ObjectHideFlags: 0
