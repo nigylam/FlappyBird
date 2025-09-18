@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -10,6 +8,7 @@ public class BirdMover : MonoBehaviour
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _maxRotationZ;
     [SerializeField] private float _minRotationZ;
+    [SerializeField] private UserInput _userInput;
 
     private Vector3 _startPosition;
     private Rigidbody2D _rigidbody;
@@ -29,7 +28,17 @@ public class BirdMover : MonoBehaviour
         _minRotation = Quaternion.Euler(0, 0, _minRotationZ);
     }
 
-    private void Update()
+    private void OnEnable()
+    {
+        _userInput.JumpKeyPressed += Move;
+    }
+
+    private void OnDisable()
+    {
+        _userInput.JumpKeyPressed -= Move;
+    }
+
+    private void Move()
     {
         if (_isFreezed)
             return;
@@ -39,7 +48,10 @@ public class BirdMover : MonoBehaviour
             _rigidbody.velocity = new Vector2(_speed, _tapForce);
             transform.rotation = _maxRotation;
         }
+    }
 
+    private void Update()
+    {
         transform.rotation = Quaternion.Lerp(transform.rotation, _minRotation, _rotationSpeed * Time.deltaTime);
     }
 

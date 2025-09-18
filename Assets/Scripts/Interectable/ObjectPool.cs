@@ -19,17 +19,18 @@ public class ObjectPool<T> where T : MonoBehaviour, IInteractable
         _activeObjects = new List<T>();
     }
 
-    public T GetObject()
+    public T GetObject(Vector2 position)
     {
         T obj;
 
         if (_pool.Count == 0)
         {
-            obj = Object.Instantiate(_prefab, _container);
+            obj = Object.Instantiate(_prefab, position, Quaternion.identity, _container);
         }
         else
         {
             obj = _pool.Dequeue();
+            obj.transform.position = position;
         }
 
         _activeObjects.Add(obj);

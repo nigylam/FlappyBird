@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour, IInteractable
+public class Bullet : MonoBehaviour, IDamaging
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float _speed;
+    [SerializeField] private float _directionX;
+
+    private void Update()
     {
-        
+        Move();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Move()
     {
-        
+        transform.Translate(new Vector2(_directionX, 0).normalized * _speed * Time.deltaTime);
     }
 }

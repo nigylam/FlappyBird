@@ -1,8 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IInteractable
+public class Enemy : MonoBehaviour, IDamaging
 {
+    [SerializeField] private float _shootProbability;
+    [SerializeField] private float _bulletPositionOffset;
 
+    private BulletGenerator _bulletGenerator;
+
+    public bool IsInitialized { get; private set; } = false;
+
+    private void OnEnable()
+    {
+        if (IsInitialized)
+            RandomShoot();
+    }
+
+    public void Initialize(BulletGenerator bulletGenerator)
+    {
+        _bulletGenerator = bulletGenerator;
+        IsInitialized = true;
+
+        RandomShoot();
+    }
+
+    private void RandomShoot()
+    {
+        if (Random.Range(0f, 1f) <= _shootProbability)
+            Shoot();
+    }
+
+    private void Shoot()
+    {
+        _bulletGenerator.Generate(new Vector2(transform.position.x + _bulletPositionOffset, transform.position.y));
+    }
 }
