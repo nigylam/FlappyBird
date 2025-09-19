@@ -65,5 +65,13 @@ public class EnemyGenerator : MonoBehaviour
 
         if (enemy.IsInitialized == false)
             enemy.Initialize(_bulletGenerator);
+
+        enemy.Shoted += RemoveShoted;
+    }
+
+    private void RemoveShoted(Enemy enemy)
+    {
+        enemy.Shoted -= RemoveShoted;
+        _remover.Remove(enemy);
     }
 }

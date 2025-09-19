@@ -16,8 +16,6 @@ public class BirdMover : MonoBehaviour
     private Quaternion _maxRotation;
     private Quaternion _minRotation;
 
-    private bool _isFreezed = false;
-
     private void Start()
     {
         _startPosition = transform.position;
@@ -38,21 +36,14 @@ public class BirdMover : MonoBehaviour
         _userInput.JumpKeyPressed -= Move;
     }
 
-    private void Move()
-    {
-        if (_isFreezed)
-            return;
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _rigidbody.velocity = new Vector2(_speed, _tapForce);
-            transform.rotation = _maxRotation;
-        }
-    }
-
     private void Update()
     {
         transform.rotation = Quaternion.Lerp(transform.rotation, _minRotation, _rotationSpeed * Time.deltaTime);
+    }
+
+    public void Initialize(UserInput userInput)
+    {
+        _userInput = userInput;
     }
 
     public void Reset()
@@ -60,11 +51,14 @@ public class BirdMover : MonoBehaviour
         _rigidbody.velocity = Vector2.zero;
         transform.position = _startPosition;
         transform.rotation = _startRotation;
-        _isFreezed = false;
     }
 
-    public void Freeze()
+    private void Move()
     {
-        _isFreezed = true;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _rigidbody.velocity = new Vector2(_speed, _tapForce);
+            transform.rotation = _maxRotation;
+        }
     }
 }

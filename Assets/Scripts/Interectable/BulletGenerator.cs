@@ -1,11 +1,9 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletGenerator : MonoBehaviour
 {
     [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private Transform _container;
-    [SerializeField] private Transform _removerObject;
     [SerializeField] private ObjectTrigger _removerTrigger;
 
     private ObjectPool<Bullet> _pool;
@@ -29,7 +27,14 @@ public class BulletGenerator : MonoBehaviour
 
     public void Generate(Vector2 spawnPoint)
     {
-        _pool.GetObject(spawnPoint);
+        var bullet = _pool.GetObject(spawnPoint);
+        bullet.Collided += RemoveCollided;
+    }
+
+    public void RemoveCollided(Bullet bullet)
+    {
+        bullet.Collided -= RemoveCollided;
+        _remover.Remove(bullet);
     }
 
     public void Reset()

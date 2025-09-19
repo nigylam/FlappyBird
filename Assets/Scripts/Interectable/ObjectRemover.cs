@@ -12,6 +12,11 @@ public class ObjectRemover<T> where T : MonoBehaviour, IInteractable
     public void OnTrigger(IInteractable obj)
     {
         if (obj is T)
-            _pool.PutObject(obj as T);
+            Remove(obj as T);
+    }
+
+    public void Remove(T obj)
+    {
+        _pool.PutObject(obj);
     }
 }
