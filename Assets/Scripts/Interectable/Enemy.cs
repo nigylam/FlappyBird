@@ -56,6 +56,8 @@ public class Enemy : MonoBehaviour, IDamaging
     private void ProcessCollision(IInteractable interactable)
     {
         if ((interactable as MonoBehaviour).gameObject.CompareTag(CharacterTag))
+        {
             Shoted?.Invoke(this);
+        }
     }
 }

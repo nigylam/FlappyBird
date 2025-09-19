@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - ScoreZone
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ScoreZone
   - Water
   - UI
-  - 
+  - Bullet
   - 
   - 
   - 

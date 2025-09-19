@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8859459367549704763}
   - component: {fileID: 5633000054093592283}
   - component: {fileID: 5402987230503659015}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ScoreZone
-  m_TagString: Untagged
+  m_TagString: ScoreZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,9 +101,9 @@ GameObject:
   - component: {fileID: 4543200882096057374}
   - component: {fileID: 4691123915176826401}
   - component: {fileID: 1440264310092067669}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ScoreZone2
-  m_TagString: Untagged
+  m_TagString: ScoreZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

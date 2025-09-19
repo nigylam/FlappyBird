@@ -72,6 +72,7 @@ public class EnemyGenerator : MonoBehaviour
     private void RemoveShoted(Enemy enemy)
     {
         enemy.Shoted -= RemoveShoted;
+        Debug.Log("remove shooted");
         _remover.Remove(enemy);
     }
 }

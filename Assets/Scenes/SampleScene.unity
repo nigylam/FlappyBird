@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388a237d97253f549b1801eaa18c7613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delay: 2
+  _delay: 1
   _lowerBound: -3
   _upperBound: 4
   _enemyPrefab: {fileID: 6234343527707325659, guid: 320d5b7cdab5d5f4496f30c212ae4dd9, type: 3}
