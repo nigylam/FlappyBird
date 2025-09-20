@@ -193,7 +193,6 @@ GameObject:
   - component: {fileID: 7543786248138539254}
   - component: {fileID: 2287798497791773588}
   - component: {fileID: 6234343527707325659}
-  - component: {fileID: -373581221757937587}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -354,17 +353,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a96035fc6a50f940b7a890ebca1a071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootProbability: 1
+  _shootProbability: 0
   _bulletPositionOffset: -1
---- !u!114 &-373581221757937587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4247324130936249337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14eb25a7be15fc54b972dc18212a9fba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -352,12 +352,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388a237d97253f549b1801eaa18c7613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _prefab: {fileID: 6234343527707325659, guid: 320d5b7cdab5d5f4496f30c212ae4dd9, type: 3}
+  _container: {fileID: 1844187361}
+  _removeTrigger: {fileID: 1549827126}
   _delay: 1
   _lowerBound: -3
   _upperBound: 4
-  _enemyPrefab: {fileID: 6234343527707325659, guid: 320d5b7cdab5d5f4496f30c212ae4dd9, type: 3}
-  _container: {fileID: 1844187361}
-  _removerTrigger: {fileID: 1549827126}
   _bulletGenerator: {fileID: 988046305}
 --- !u!1 &497448545
 GameObject:
@@ -602,9 +602,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b7f65b481eef4eac605713860a4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 4392130957177697365, guid: 1d5ee893bfc212a43a8961e1ec52ade7, type: 3}
+  _prefab: {fileID: 4392130957177697365, guid: 1d5ee893bfc212a43a8961e1ec52ade7, type: 3}
   _container: {fileID: 692751419}
-  _removerTrigger: {fileID: 1227673065}
+  _removeTrigger: {fileID: 1227673065}
 --- !u!114 &497448556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -978,9 +978,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b7f65b481eef4eac605713860a4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 4392130957177697365, guid: 3963c68957d216e4ba202532626e7df6, type: 3}
+  _prefab: {fileID: 4392130957177697365, guid: 3963c68957d216e4ba202532626e7df6, type: 3}
   _container: {fileID: 692751419}
-  _removerTrigger: {fileID: 1549827126}
+  _removeTrigger: {fileID: 1549827126}
 --- !u!1 &1079996785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,7 +1196,7 @@ GameObject:
   - component: {fileID: 1227673065}
   m_Layer: 0
   m_Name: ObjectRemover (1)
-  m_TagString: Untagged
+  m_TagString: RemoveTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1524,7 +1524,7 @@ GameObject:
   - component: {fileID: 1549827126}
   m_Layer: 0
   m_Name: ObjectRemover
-  m_TagString: Untagged
+  m_TagString: RemoveTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
