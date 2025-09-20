@@ -28,7 +28,8 @@ public abstract class Generator<T> : MonoBehaviour where T : Damager
 
     public virtual T Generate(Vector2 spawnPoint)
     {
-        var obj = _pool.GetObject(spawnPoint);
+        var obj = _pool.GetObject();
+        obj.transform.position = spawnPoint;
         obj.Collided += Remove;
         _activeObjects.Add(obj);
         return obj;
@@ -39,6 +40,7 @@ public abstract class Generator<T> : MonoBehaviour where T : Damager
         if (obj is T)
         {
             obj.Collided -= Remove;
+            _activeObjects.Remove(obj as T);
             _pool.PutObject(obj as T);
         }
     }
@@ -47,10 +49,10 @@ public abstract class Generator<T> : MonoBehaviour where T : Damager
     {
         if (_activeObjects.Count > 0)
         {
-            foreach (var obj in _activeObjects)
-                Remove(obj);
-        }
+            for(int i  = _activeObjects.Count-1; i >= 0; i--)
+                    Remove(_activeObjects[i]);
 
-        _activeObjects.Clear();
+            _activeObjects.Clear();
+        }
     }
 }

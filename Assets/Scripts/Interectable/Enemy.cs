@@ -11,21 +11,13 @@ public class Enemy : Damager
 
     public bool IsInitialized { get; private set; } = false;
 
-    private void OnEnable()
-    {
-        if (IsInitialized)
-            RandomShoot();
-    }
-
     public void Initialize(BulletGenerator bulletGenerator)
     {
         _bulletGenerator = bulletGenerator;
         IsInitialized = true;
-
-        RandomShoot();
     }
 
-    private void RandomShoot()
+    public void RandomShoot()
     {
         if (Random.Range(0f, 1f) <= _shootProbability)
             Shoot();

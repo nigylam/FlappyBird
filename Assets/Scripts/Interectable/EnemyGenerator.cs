@@ -51,5 +51,7 @@ public class EnemyGenerator : Generator<Enemy>
 
         if (enemy.IsInitialized == false)
             enemy.Initialize(_bulletGenerator);
+
+        enemy.RandomShoot();
     }
 }
